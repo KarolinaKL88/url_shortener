@@ -1,0 +1,16 @@
+<html>
+<body>
+{% if request.GET.created_alias %}^M
+    <div>
+        Skrót dodany! Skrócony URL to: ^M
+        {% url 'redirect' alias=request.GET.created_alias as alias %}
+        <a href="{{ alias  }}">{{ alias }}</a>
+    </div>
+{% endif %}
+<form method="post">
+    {% csrf_token %}
+    <table>{{ form }}</table>
+    <input type="submit" value="Wygeneruj skrót">
+</form>
+</body>
+</html>

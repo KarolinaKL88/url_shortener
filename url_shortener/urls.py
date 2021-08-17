@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from shortener_app.views import redirect_view, AliasCreateView  # get_alias,
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # path('create/', get_alias, name='create'),
+    path('create/', AliasCreateView.as_view(), name='create'),
+    path('<alias>/', redirect_view, name='redirect')
 ]
